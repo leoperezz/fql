@@ -32,6 +32,31 @@ pip install -r requirements.txt
 > [!NOTE]
 > To use D4RL environments, you need to additionally set up MuJoCo 2.1.0.
 
+### MuJoCo 2.1.0 setup (for D4RL, Linux)
+
+On Linux, D4RL expects MuJoCo 2.1.0 to be installed in `~/.mujoco/mujoco210` and available on your `LD_LIBRARY_PATH`.
+
+1. **Download MuJoCo 2.1.0 (Linux, x86\_64)**  
+   Download and extract:
+   ```bash
+   mkdir -p ~/.mujoco
+   cd ~/.mujoco
+   wget https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz
+   tar -xzf mujoco210-linux-x86_64.tar.gz
+   # This should create ~/.mujoco/mujoco210
+   ```
+
+2. **Add MuJoCo and NVIDIA libraries to `LD_LIBRARY_PATH`**  
+   Add the following line to your `~/.bashrc` (or equivalent shell config), then reload your shell:
+   ```bash
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin:/usr/lib/nvidia:/usr/lib/x86_64-linux-gnu/nvidia
+   ```
+   Then run:
+   ```bash
+   source ~/.bashrc
+   ```
+
+
 ## Usage
 
 The main implementation of FQL is in [agents/fql.py](agents/fql.py),
